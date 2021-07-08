@@ -94,14 +94,5 @@ public class SnowFlake {
         return System.currentTimeMillis();
     }
 
-    public static void main(String[] args) {
-        SnowFlake snowFlake = new SnowFlake(2, 3);
 
-        for (int i = 0; i < (1 << 12); i++) {
-            long l = snowFlake.nextId();
-            System.out.println(l);
-            System.out.println(MathUtils.decimalToBase62(l));
-        }
-
-    }
 }

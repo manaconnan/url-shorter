@@ -45,8 +45,8 @@ public class UrlManager {
         }
         log.info("start convert, url = {}",url);
         // step1: check if url might exist ， hash first to get a shorter key
-        String hash = shortUrlService.generateShortUrl(url);
         boolean b = bloomFilterService.mightExist(url);
+        String hash = shortUrlService.generateShortUrl(url);
         if (b){
            // might exist, query from local cache and db with hash as key
             String urlByHash = shortUrlService.findByKey(hash);
@@ -66,7 +66,6 @@ public class UrlManager {
             }
         }
 
-        bloomFilterService.put(hash);
         asynProcessor.add2BloomFilterAndCacheAndDb(hash,url);
 
         return ResponseBuilder.buildSuccessResponse(makeShortUrl(hash));

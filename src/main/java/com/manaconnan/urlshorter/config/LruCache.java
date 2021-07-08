@@ -1,5 +1,6 @@
 package com.manaconnan.urlshorter.config;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
@@ -89,6 +90,15 @@ public class LruCache<K, V> {
             map.remove(toRemove.getKey());
             memorySize --;
         }
+    }
+
+    public static void main(String[] args) {
+        Map<String,String> ma =new HashMap<>();
+        ma.put("a","a");
+        ma.put("b","b");
+        ma.put("c","c");
+        Map.Entry<String, String> next = ma.entrySet().iterator().next();
+        System.out.println(next.getKey());
     }
 
 
